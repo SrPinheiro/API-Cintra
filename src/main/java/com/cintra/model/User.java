@@ -3,6 +3,8 @@ package com.cintra.model;
 import com.cintra.model.DTO.UserDTO;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name= "tb_user")
 public class User extends UserDTO {
@@ -10,6 +12,10 @@ public class User extends UserDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String password;
+    @Lob
+    private String token;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     @ManyToOne
     @JoinColumn(name="role_id")
     private Roles role;
@@ -31,5 +37,37 @@ public class User extends UserDTO {
 
     public Long getId() {
         return id;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
