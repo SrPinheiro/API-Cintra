@@ -1,10 +1,6 @@
 package com.cintra.model.DTO;
 
-import com.cintra.model.Roles;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
 
 import java.io.Serializable;
 

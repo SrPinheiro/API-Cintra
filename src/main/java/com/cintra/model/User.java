@@ -1,26 +1,40 @@
 package com.cintra.model;
 
 import com.cintra.model.DTO.UserDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name= "tb_user")
-public class User extends UserDTO {
+public class User extends UserDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String password;
     @Lob
     private String token;
+    private String uip;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     @ManyToOne
     @JoinColumn(name="role_id")
-    private Roles role;
+    private Role role;
 
     public User() {
+    }
+
+    public User(String name, String email, String cpf, Long id, String password, String token, LocalDateTime createdAt, LocalDateTime updatedAt, Role role, String uip) {
+        super(name, email, cpf);
+        this.id = id;
+        this.password = password;
+        this.token = token;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.role = role;
+        this.uip = uip;
     }
 
     public String getPassword() {
@@ -39,11 +53,11 @@ public class User extends UserDTO {
         return id;
     }
 
-    public Roles getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Roles role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -69,5 +83,13 @@ public class User extends UserDTO {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUip() {
+        return uip;
+    }
+
+    public void setUip(String uip) {
+        this.uip = uip;
     }
 }

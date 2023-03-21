@@ -2,10 +2,8 @@ package com.cintra.services;
 
 import com.cintra.model.User;
 import com.cintra.repositories.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -37,6 +35,10 @@ public class UserService {
         return userRepository.findByToken(token);
     }
 
+    public User findByName(String name){
+        return userRepository.findByName(name);
+    }
+
     public void deleteById(long id){
         userRepository.deleteById(id);
     }
@@ -44,4 +46,5 @@ public class UserService {
     public boolean existsById(long id){
         return userRepository.existsById(id);
     }
+
 }
