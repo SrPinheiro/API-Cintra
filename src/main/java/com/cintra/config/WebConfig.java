@@ -22,25 +22,6 @@ public class WebConfig implements WebMvcConfigurer {
         new ThreadConfig().start();
     }
 
-    // @Override
-    // public void addCorsMappings(CorsRegistry registry) {
-    //     registry.addMapping("/**")
-    //     .allowedOrigins("http://srpinheiro.com:3000") // substitua pelo seu domínio
-    //     .allowedMethods("GET", "POST", "PUT", "DELETE")
-    //     .allowedHeaders("*");
-    // }
-
-    // @Bean
-    // public CorsFilter corsFilter() {
-    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    //     CorsConfiguration config = new CorsConfiguration();
-    //     config.addAllowedOrigin("*");
-    //     config.addAllowedMethod("*");
-    //     config.addAllowedHeader("*");
-    //     source.registerCorsConfiguration("/**", config);
-    //     return new CorsFilter(source);
-    // }
-    
 
     private class ThreadConfig extends Thread{
         @Override

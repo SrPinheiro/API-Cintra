@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -21,6 +22,7 @@ public class Consulta implements Serializable{
     private long id;
     private String doctor;
     @ManyToOne
+    @JoinColumn(name="user_id")
     private User client;
     private String data_de_marcacao;
     private String data_da_consulta;

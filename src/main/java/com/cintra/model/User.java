@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name= "tb_user")
@@ -22,6 +24,9 @@ public class User extends UserDTO implements Serializable {
     @ManyToOne
     @JoinColumn(name="role_id")
     private Role role;
+
+    @OneToMany
+    private List<Compra> compras = new ArrayList<>();
 
     public User() {
     }

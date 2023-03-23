@@ -22,6 +22,7 @@ import com.cintra.helpers.Users;
 import com.cintra.model.Consulta;
 import com.cintra.model.User;
 import com.cintra.services.ConsultaService;
+import com.cintra.services.RoleService;
 import com.cintra.services.UserService;
 
 import jakarta.servlet.http.Cookie;
@@ -35,6 +36,8 @@ public class ConsultaController {
     private UserService userService;
     @Autowired
     private ConsultaService consultaService;
+    @Autowired
+    private RoleService roleService;
     private User currentUser;
 
 
@@ -84,6 +87,7 @@ public class ConsultaController {
 
     @GetMapping
     public Object getAllConsultas() {
+               
         if(currentUser != null)
             return new ResponseEntity(consultaService.findAll().stream().filter(c-> c.getClient() == currentUser).collect(Collectors.toList()), HttpStatus.OK);
 

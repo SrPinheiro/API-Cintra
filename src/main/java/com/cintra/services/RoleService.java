@@ -33,6 +33,10 @@ public class RoleService {
     public Role save(Role r){
         return roleRepository.save(r);
     }
+
+    public long count(){
+        return roleRepository.count();
+    }
     
 
 

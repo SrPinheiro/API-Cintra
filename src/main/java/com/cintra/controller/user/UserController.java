@@ -71,15 +71,19 @@ public class UserController {
             err = err;
         }
         
-        u.setRole(null);
         u.setId(null);
         u.setToken(UUID.randomUUID().toString());
-        u.setRole(roleService.findByName("admin"));
-
+        u.setRole(roleService.findByName("user"));
+        
     
         response.addCookie(generateCookie(u));
 
         return new ResponseEntity<>(userService.save(u), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/me")
+    public Object returnMe(){
+        return new ResponseEntity<>(currentUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
